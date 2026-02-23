@@ -15,6 +15,7 @@ class SP_AI_Reporting
      */
 	private static $_instance;
 
+	public $menu;
 	public $scripts;
 	public $ajax;
 	public $shortcode;
@@ -36,6 +37,7 @@ class SP_AI_Reporting
 	public function __construct()
 	{
 
+		$this->menu = SPAR\Plugin\Menu::instance();
 		$this->scripts = SPAR\Plugin\Scripts::instance();
 		$this->ajax = SPAR\Plugin\Ajax::instance();
 		$this->shortcode = SPAR\Plugin\Shortcode::instance();
