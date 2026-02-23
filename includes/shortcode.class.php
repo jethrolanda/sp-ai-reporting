@@ -21,7 +21,7 @@ class Shortcode
    */
   public function __construct()
   {
- 
+    add_shortcode('ai_prompt_frontend', array($this, 'ai_prompt_frontend'));
   }
 
   /**
@@ -36,5 +36,17 @@ class Shortcode
     }
     return self::$_instance;
   }
- 
+
+  public function ai_prompt_frontend($atts)
+  {
+    $atts = shortcode_atts(array(
+      'foo' => 'no foo',
+      'baz' => 'default baz'
+    ), $atts, 'ai_prompt_frontend');
+
+    ob_start();
+
+    echo '<div id="ai-prompt-frontend"></div>';
+    return ob_get_clean();
+  }
 }

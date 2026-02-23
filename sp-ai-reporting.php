@@ -20,6 +20,7 @@ define('SPAR_PLUGIN_URL',             plugins_url() . '/sp-ai-reporting/');
 define('SPAR_PLUGIN_DIR',             plugin_dir_path(__FILE__));
 define('SPAR_CSS_ROOT_URL',           SPAR_PLUGIN_URL . 'css/');
 define('SPAR_JS_ROOT_URL',            SPAR_PLUGIN_URL . 'js/');
+define('SPAR_JS_ROOT_DIR',            SPAR_PLUGIN_DIR . 'js/');
 define('SPAR_TEMPLATES_ROOT_URL',     SPAR_PLUGIN_URL . 'templates/');
 define('SPAR_TEMPLATES_ROOT_DIR',     SPAR_PLUGIN_DIR . 'templates/');
 define('SPAR_BLOCKS_ROOT_URL',        SPAR_PLUGIN_URL . 'blocks/');

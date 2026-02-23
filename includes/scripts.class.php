@@ -66,5 +66,22 @@ class Scripts
    * @since 1.0
    * @return bool
    */
-  public function frontend_script_loader() {}
+  public function frontend_script_loader() {
+    $asset_file = SPAR_JS_ROOT_DIR . 'ai-prompt-frontend/build/index.asset.php';
+
+    $shortcode_exist = has_shortcode( get_post_field('post_content', get_the_ID()), 'ai_prompt_frontend' );
+    if (file_exists($asset_file) && $shortcode_exist) {
+      $asset = include $asset_file;
+      wp_register_script('ai-prompt-frontend-js', SPAR_JS_ROOT_URL . 'ai-prompt-frontend/build/index.js', $asset['dependencies'], $asset['version'], true);
+      wp_localize_script('ai-prompt-frontend-js', 'ai_prompt_frontend_params', array(
+        'rest_url'   => esc_url_raw(get_rest_url()),
+        'nonce' => wp_create_nonce('wp_rest'),
+        'ajax_url' => admin_url('admin-ajax.php'),
+      ));
+      wp_register_style('ai-prompt-frontend-css', SPAR_JS_ROOT_URL . 'ai-prompt-frontend/build/index.css');
+
+      wp_enqueue_style('ai-prompt-frontend-css');
+      wp_enqueue_script('ai-prompt-frontend-js');
+    }
+  }
 }
